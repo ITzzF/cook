@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>尝尝咸淡 RAG - AI 智能厨师</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">🍽️</div>
+                <h2>控制台</h2>
+            </div>
+
+            <div class="sidebar-content">
+                <div id="system-status" class="status-card">
+                    <div class="status-indicator offline"></div>
+                    <span id="status-text">系统未启动</span>
+                </div>
+
+                <button id="init-btn" class="primary-btn full-width">
+                    🚀 启动美食引擎
+                </button>
+
+                <div class="divider"></div>
+
+                <h3>📝 操作流程</h3>
+                <ol class="instruction-list">
+                    <li>点击上方按钮启动引擎</li>
+                    <li>点击下方标签获取灵感</li>
+                    <li>在右侧对话框发送问题</li>
+                </ol>
+
+                <div class="divider"></div>
+
+                <h3>💡 灵感橱窗</h3>
+                <div class="inspiration-grid">
+                    <button class="tag-btn" data-query="推荐几道经典的川菜">🌶️ 推荐川菜</button>
+                    <button class="tag-btn" data-query="推荐几款养生汤品">🍲 适合煲汤</button>
+                    <button class="tag-btn" data-query="推荐简单好做的素菜">🥗 清淡素食</button>
+                    <button class="tag-btn" data-query="有什么好吃的面食">🍜 面食推荐</button>
+                    <button class="tag-btn" data-query="宫保鸡丁怎么做">宫保鸡丁</button>
+                    <button class="tag-btn" data-query="麻婆豆腐怎么做">麻婆豆腐</button>
+                    <button class="tag-btn" data-query="红烧肉怎么做">红烧肉</button>
+                    <button class="tag-btn" data-query="清蒸鱼怎么做">清蒸鱼</button>
+                </div>
+
+                <div class="divider"></div>
+
+                <h3>✨ 系统亮点</h3>
+                <div class="feature-card">
+                    <div class="icon">📚</div>
+                    <div class="text">
+                        <h4>海量食谱库</h4>
+                        <p>收录数百道经典家常菜，涵盖八大菜系。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🧠</div>
+                    <div class="text">
+                        <h4>智能 RAG 引擎</h4>
+                        <p>混合检索 + RRF 重排，精准理解口味偏好。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <div class="text">
+                        <h4>极速响应体验</h4>
+                        <p>本地向量索引加持，毫秒级检索响应。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                Designed by 尝尝咸淡 RAG Team
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>尝尝咸淡 RAG</h1>
+                <p>您的私人 AI 智能厨艺导师</p>
+            </header>
+
+            <div id="chat-container" class="chat-container">
+                <div class="message system-message">
+                    <div class="content">
+                        👈 请在左侧点击 <strong>“启动美食引擎”</strong> 开始使用
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="user-input" placeholder="输入菜名或描述，例如：红烧肉怎么做？" disabled>
+                    <button id="send-btn" disabled>发送</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
